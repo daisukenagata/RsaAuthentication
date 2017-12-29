@@ -11,21 +11,25 @@
  settings...
  
  3.Drag and drop it to the created cert.pem simulator
+ 
  General->About->Certificate Trust Settings->Enable certificate
  
  <img src="https://github.com/daisukenagata/RsaAuthentication/blob/master/Certificate.png?raw=true" width="280px">
  
  4.info.Plistセッテイング
  
+ ```
  <dict>
-		<key>NSExceptionDomains</key>
+	<key>NSExceptionDomains</key>
+	<dict>
+		<key>localhost</key>
 		<dict>
-			<key>localhost</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
+			<key>NSExceptionAllowsInsecureHTTPLoads</key>
+			<true/>
 		</dict>
+	</dict>
+</dict>
+```
 
  5.python httpsServer.py
  
