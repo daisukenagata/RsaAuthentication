@@ -44,6 +44,11 @@ class ViewController: UIViewController,UITextFieldDelegate {
         return true
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+        return string.isEmpty || string.range(of: "[a-zA-Z0-9]+", options: .regularExpression, range: nil, locale: nil) != nil
+    }
+    
     func postMethod(txt:String)->String?
     {
         
