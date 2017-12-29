@@ -47,7 +47,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     func postMethod(txt:String)->String?
     {
         
-        let urlString = "http://localhost:8000/?\(txt.replacingOccurrences(of: " ", with: "+"))"
+        let urlString = "https://localhost:8000/?\(txt.replacingOccurrences(of: " ", with: "+"))"
         
         
         var request = URLRequest(url: URL(string:urlString)!)

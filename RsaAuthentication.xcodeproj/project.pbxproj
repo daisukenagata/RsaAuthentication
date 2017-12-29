@@ -11,9 +11,9 @@
 		BB2899321FEE41300058D413 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2899311FEE41300058D413 /* ViewController.swift */; };
 		BB2899351FEE41300058D413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB2899331FEE41300058D413 /* Main.storyboard */; };
 		BB2899371FEE41300058D413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB2899361FEE41300058D413 /* Assets.xcassets */; };
-		BB28993A1FEE41300058D413 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB2899381FEE41300058D413 /* LaunchScreen.storyboard */; };
 		BB2899451FEE41300058D413 /* RsaAuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2899441FEE41300058D413 /* RsaAuthenticationTests.swift */; };
 		BB2899501FEE41300058D413 /* RsaAuthenticationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28994F1FEE41300058D413 /* RsaAuthenticationUITests.swift */; };
+		BBB6CF081FF676140076AD26 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBB6CF071FF676140076AD26 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,6 @@
 		BB2899311FEE41300058D413 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BB2899341FEE41300058D413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB2899361FEE41300058D413 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BB2899391FEE41300058D413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB28993B1FEE41300058D413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB2899401FEE41300058D413 /* RsaAuthenticationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RsaAuthenticationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB2899441FEE41300058D413 /* RsaAuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RsaAuthenticationTests.swift; sourceTree = "<group>"; };
@@ -47,6 +46,7 @@
 		BB28994B1FEE41300058D413 /* RsaAuthenticationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RsaAuthenticationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB28994F1FEE41300058D413 /* RsaAuthenticationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RsaAuthenticationUITests.swift; sourceTree = "<group>"; };
 		BB2899511FEE41300058D413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBB6CF071FF676140076AD26 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +101,8 @@
 				BB2899311FEE41300058D413 /* ViewController.swift */,
 				BB2899331FEE41300058D413 /* Main.storyboard */,
 				BB2899361FEE41300058D413 /* Assets.xcassets */,
-				BB2899381FEE41300058D413 /* LaunchScreen.storyboard */,
 				BB28993B1FEE41300058D413 /* Info.plist */,
+				BBB6CF071FF676140076AD26 /* Launch Screen.storyboard */,
 			);
 			path = RsaAuthentication;
 			sourceTree = "<group>";
@@ -232,7 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB28993A1FEE41300058D413 /* LaunchScreen.storyboard in Resources */,
+				BBB6CF081FF676140076AD26 /* Launch Screen.storyboard in Resources */,
 				BB2899371FEE41300058D413 /* Assets.xcassets in Resources */,
 				BB2899351FEE41300058D413 /* Main.storyboard in Resources */,
 			);
@@ -302,14 +302,6 @@
 				BB2899341FEE41300058D413 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		BB2899381FEE41300058D413 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BB2899391FEE41300058D413 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
