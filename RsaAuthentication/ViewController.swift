@@ -13,7 +13,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var EnterField: UITextField!
     @IBOutlet weak var tryField: UILabel!
     
-    static var result : String? = nil
+    var result : String? = nil
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +27,10 @@ class ViewController: UIViewController,UITextFieldDelegate {
         
         textField.resignFirstResponder()
         _ = self.postMethod(txt:self.EnterField.text!)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        
+        Thread.sleep(forTimeInterval: 1.5)
             
-            if ViewController.result  == "password" {
+            if result  == "password" {
                 
                 let vc = self.storyboard!.instantiateViewController( withIdentifier: "segue" )
                 self.present(vc, animated: true, completion: nil)
@@ -38,9 +39,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
                 
                 self.tryField.text = "try"
             }
-        }
- 
+        
         return true
+        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
@@ -62,12 +63,12 @@ class ViewController: UIViewController,UITextFieldDelegate {
             
             guard (data != nil) else{ return }
             
-            ViewController.result = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+            self.result = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
             
         })
         
         task.resume()
-        return ViewController.result
+        return self.result
         
     }
 
