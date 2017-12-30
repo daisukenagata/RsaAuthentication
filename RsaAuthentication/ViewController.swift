@@ -20,6 +20,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         
         EnterField.delegate = self
         self.tryField.text = ""
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool 
@@ -38,6 +39,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
             }else{
                 
                 self.tryField.text = "try"
+                
             }
         
         return true
@@ -46,24 +48,24 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
-        return string.isEmpty || string.range(of: "[a-zA-Z0-9]+", options: .regularExpression, range: nil, locale: nil) != nil
+        return string.isEmpty || string.range(of: "[a-zA-Z0-9]+",
+                                              options: .regularExpression,
+                                              range: nil,
+                                              locale: nil) != nil
     }
     
     func postMethod(txt:String)->String?
     {
         
         let urlString = "https://localhost:8000/?\(txt.replacingOccurrences(of: " ", with: "+"))"
-        
-        
         var request = URLRequest(url: URL(string:urlString)!)
-
         request.httpMethod = "POST"
-        
         let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
             
             guard (data != nil) else{ return }
             
-            self.result = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))! 
+            self.result = String(data: data!,
+                                 encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
             
         })
         
