@@ -28,9 +28,12 @@
 
  7.In case of real machine
 
- call.py
+ httpsServer/call.py
 	
-` server = HTTPServer(('IP', int(8000)), handler)`
-
+ ` server = HTTPServer(('IP', int(8000)), handler)`
  
+ httpsServer/ViewController
+ 
+`let urlString = "https://IP/?\(txt.replacingOccurrences(of: " ", with: "+"))"`
+
  1~6 Set!
