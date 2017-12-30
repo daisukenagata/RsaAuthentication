@@ -19,7 +19,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         
         EnterField.delegate = self
-       self.tryField.text = ""
+        self.tryField.text = ""
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool 
@@ -27,8 +27,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         
         textField.resignFirstResponder()
         _ = self.postMethod(txt:self.EnterField.text!)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             
             if ViewController.result  == "password" {
                 
