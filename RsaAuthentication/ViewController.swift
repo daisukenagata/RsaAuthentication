@@ -12,7 +12,6 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var EnterField: UITextField!
     @IBOutlet weak var tryField: UILabel!
-    
     static var result : String? = nil
     
     override func viewDidLoad() {
@@ -23,24 +22,11 @@ class ViewController: UIViewController,UITextFieldDelegate {
         
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         
         textField.resignFirstResponder()
-        _ = String.postMethod(txt:self.EnterField.text!)
-        
-        Thread.sleep(forTimeInterval: 1.5)
-        
-        guard ViewController.result != "password" else {
-            
-            let vc = self.storyboard!.instantiateViewController( withIdentifier: "segue" )
-            self.present(vc, animated: true, completion: nil)
-            return true
-            
-        }
-        
-        self.tryField.text = "try"
-        
+        String.checkSt(textField:EnterField,vc:self,tryField:tryField)
         return true
         
     }

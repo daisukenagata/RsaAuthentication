@@ -6,7 +6,7 @@
 //  Copyright © 2017年 永田大祐. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension String {
     
@@ -29,4 +29,22 @@ extension String {
         return ViewController.result
         
     }
+    
+    static func checkSt(textField:UITextField,vc:UIViewController?,tryField:UILabel)
+    {
+        
+        _ = String.postMethod(txt:textField.text!)
+        Thread.sleep(forTimeInterval: 1.5)
+        guard ViewController.result != "password" else {
+            
+            let vcset = vc?.storyboard!.instantiateViewController( withIdentifier: "segue" )
+            vc?.present(vcset!, animated: true, completion: nil)
+            return
+            
+        }
+        
+        tryField.text = "try"
+        
+    }
 }
+
