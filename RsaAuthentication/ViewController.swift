@@ -59,17 +59,16 @@ class ViewController: UIViewController,UITextFieldDelegate {
         request.httpMethod = "POST"
         
         let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-            if (error == nil) {
-                
-                ViewController.result = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
-
-                
-            } else {
-                
-            }
+            
+            guard (data != nil) else{ return }
+            
+            ViewController.result = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+            
         })
+        
         task.resume()
         return ViewController.result
+        
     }
 
 }
