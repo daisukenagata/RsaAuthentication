@@ -34,7 +34,7 @@ extension String {
     {
         
         _ = String.postMethod(txt:textField.text!)
-        Thread.sleep(forTimeInterval: 1.5)
+        Thread.sleep(forTimeInterval: 1.7)
         guard ViewController.result != "password" else {
             
             let vcset = vc?.storyboard!.instantiateViewController( withIdentifier: "segue" )
