@@ -13,8 +13,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var EnterField: UITextField!
     @IBOutlet weak var tryField: UILabel!
     
-    var result : String? = nil
-   
+    static var result : String? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,20 +27,19 @@ class ViewController: UIViewController,UITextFieldDelegate {
     {
         
         textField.resignFirstResponder()
-        _ = self.postMethod(txt:self.EnterField.text!)
+        _ = String.postMethod(txt:self.EnterField.text!)
         
         Thread.sleep(forTimeInterval: 1.5)
+        
+        guard ViewController.result != "password" else {
             
-            if result  == "password" {
-                
-                let vc = self.storyboard!.instantiateViewController( withIdentifier: "segue" )
-                self.present(vc, animated: true, completion: nil)
-                
-            }else{
-                
-                self.tryField.text = "try"
-                
-            }
+            let vc = self.storyboard!.instantiateViewController( withIdentifier: "segue" )
+            self.present(vc, animated: true, completion: nil)
+            return true
+            
+        }
+        
+        self.tryField.text = "try"
         
         return true
         
@@ -53,25 +52,4 @@ class ViewController: UIViewController,UITextFieldDelegate {
                                               range: nil,
                                               locale: nil) != nil
     }
-    
-    func postMethod(txt:String)->String?
-    {
-        
-        let urlString = "https://localhost:8000/?\(txt.replacingOccurrences(of: " ", with: "+"))"
-        var request = URLRequest(url: URL(string:urlString)!)
-        request.httpMethod = "POST"
-        let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-            
-            guard (data != nil) else{ return }
-            
-            self.result = String(data: data!,
-                                 encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-            
-        })
-        
-        task.resume()
-        return self.result
-        
-    }
-
 }
