@@ -63,7 +63,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
             
             guard (data != nil) else{ return }
             
-            self.result = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)! as String
+            self.result = String(data: data!, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))! 
             
         })
         
