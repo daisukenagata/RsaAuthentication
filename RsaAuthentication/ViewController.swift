@@ -26,7 +26,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     {
         
         textField.resignFirstResponder()
-        urlSet.checkSt(textField:EnterField,vc:self,tryField:tryField)
+        urlSet.checkSt(tex:EnterField.text!,vc:self,tryField:tryField)
         return true
         
     }

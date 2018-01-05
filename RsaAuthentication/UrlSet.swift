@@ -10,23 +10,23 @@ import UIKit
 
 protocol PostMethod:class
 {
-    func postMethod(txt:String)->String?
+    func postMethod(textTxt:String,vc:UIViewController?,tryField:UILabel)
 }
 
 protocol CheckSt:class
 {
-    func checkSt(textField:UITextField,vc:UIViewController?,tryField:UILabel)
+    func checkSt(tex:String,vc:UIViewController?,tryField:UILabel)
     var result:String{get set}
 }
 
 class UrlSet:PostMethod,CheckSt {
+    
     var result: String = ""
     
-    
-    func postMethod(txt:String)->String?
+    func postMethod(textTxt:String,vc:UIViewController?,tryField:UILabel)
     {
         
-        let urlString = "https://localhost:8000/?\(txt.replacingOccurrences(of: " ", with: "+"))"
+        let urlString = "https://localhost:8000/?\(textTxt.replacingOccurrences(of: " ", with: "+"))"
         var request = URLRequest(url: URL(string:urlString)!)
         request.httpMethod = "POST"
         let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
@@ -34,21 +34,19 @@ class UrlSet:PostMethod,CheckSt {
             guard (data != nil) else{ return }
             
             self.result = String(data: data!,
-                                           encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+                                 encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
             
         })
         
         task.resume()
-        return result
         
     }
     
-     func checkSt(textField:UITextField,vc:UIViewController?,tryField:UILabel)
+    func checkSt(tex:String,vc:UIViewController?,tryField:UILabel)
     {
-        
-        _ = postMethod(txt:textField.text!)
-        
-        Thread.sleep(forTimeInterval: 1.7)
+    
+        postMethod(textTxt:tex,vc:vc,tryField:tryField)
+        Thread.sleep(forTimeInterval: 1.7) //communication result
         guard result != "password" else {
             
             let vcset = vc?.storyboard!.instantiateViewController( withIdentifier: "segue" )
