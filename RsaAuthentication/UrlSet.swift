@@ -1,5 +1,5 @@
 //
-//  ExtensionString.swift
+//  UrlSet.swift
 //  RsaAuthentication
 //
 //  Created by 永田大祐 on 2017/12/31.
@@ -8,9 +8,22 @@
 
 import UIKit
 
-extension String {
+protocol PostMethod:class
+{
+    func postMethod(txt:String)->String?
+}
+
+protocol CheckSt:class
+{
+    func checkSt(textField:UITextField,vc:UIViewController?,tryField:UILabel)
+    var result:String{get set}
+}
+
+class UrlSet:PostMethod,CheckSt {
+    var result: String = ""
     
-    static func postMethod(txt:String)->String?
+    
+    func postMethod(txt:String)->String?
     {
         
         let urlString = "https://localhost:8000/?\(txt.replacingOccurrences(of: " ", with: "+"))"
@@ -20,22 +33,23 @@ extension String {
             
             guard (data != nil) else{ return }
             
-            ViewController.result = String(data: data!,
+            self.result = String(data: data!,
                                            encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
             
         })
         
         task.resume()
-        return ViewController.result
+        return result
         
     }
     
-    static func checkSt(textField:UITextField,vc:UIViewController?,tryField:UILabel)
+     func checkSt(textField:UITextField,vc:UIViewController?,tryField:UILabel)
     {
         
-        _ = String.postMethod(txt:textField.text!)
+        _ = postMethod(txt:textField.text!)
+        
         Thread.sleep(forTimeInterval: 1.7)
-        guard ViewController.result != "password" else {
+        guard result != "password" else {
             
             let vcset = vc?.storyboard!.instantiateViewController( withIdentifier: "segue" )
             vc?.present(vcset!, animated: true, completion: nil)

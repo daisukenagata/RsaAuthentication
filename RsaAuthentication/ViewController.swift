@@ -12,7 +12,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var EnterField: UITextField!
     @IBOutlet weak var tryField: UILabel!
-    static var result : String? = nil
+    var urlSet = UrlSet()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     {
         
         textField.resignFirstResponder()
-        String.checkSt(textField:EnterField,vc:self,tryField:tryField)
+        urlSet.checkSt(textField:EnterField,vc:self,tryField:tryField)
         return true
         
     }
