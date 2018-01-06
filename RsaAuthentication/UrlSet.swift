@@ -10,7 +10,7 @@ import UIKit
 
 protocol PostMethod:class
 {
-    func postMethod(textTxt:String,vc:UIViewController?,tryField:UILabel)
+    func postMethod(textTxt:String)
 }
 
 protocol CheckSt:class
@@ -23,7 +23,7 @@ class UrlSet:PostMethod,CheckSt {
     
     var result: String = ""
     
-    func postMethod(textTxt:String,vc:UIViewController?,tryField:UILabel)
+    func postMethod(textTxt:String)
     {
         
         let urlString = "https://localhost:8000/?\(textTxt.replacingOccurrences(of: " ", with: "+"))"
@@ -45,7 +45,7 @@ class UrlSet:PostMethod,CheckSt {
     func checkSt(tex:String,vc:UIViewController?,tryField:UILabel)
     {
     
-        postMethod(textTxt:tex,vc:vc,tryField:tryField)
+        postMethod(textTxt:tex)
         Thread.sleep(forTimeInterval: 1.7) //communication result
         guard result != "password" else {
             
