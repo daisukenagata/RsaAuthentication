@@ -10,7 +10,7 @@ import UIKit
 
 protocol PostMethod:class
 {
-    func postMethod(textTxt:String)
+    func postMethod(tex:String,vc:UIViewController?,tryField:UILabel)
 }
 
 protocol CheckSt:class
@@ -23,10 +23,10 @@ class UrlSet:PostMethod,CheckSt {
     
     var result: String = ""
     
-    func postMethod(textTxt:String)
+    func postMethod(tex:String,vc:UIViewController?,tryField:UILabel)
     {
         
-        let urlString = "https://localhost:8000/?\(textTxt.replacingOccurrences(of: " ", with: "+"))"
+        let urlString = "https://localhost:8000/?\(tex.replacingOccurrences(of: " ", with: "+"))"
         var request = URLRequest(url: URL(string:urlString)!)
         request.httpMethod = "POST"
         let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
@@ -35,6 +35,7 @@ class UrlSet:PostMethod,CheckSt {
             
             self.result = String(data: data!,
                                  encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+            self.checkSt(tex:tex,vc:vc,tryField:tryField)
             
         })
         
@@ -45,8 +46,7 @@ class UrlSet:PostMethod,CheckSt {
     func checkSt(tex:String,vc:UIViewController?,tryField:UILabel)
     {
     
-        postMethod(textTxt:tex)
-        Thread.sleep(forTimeInterval: 1.7) //communication result
+        DispatchQueue.main.sync {
         guard result != "password" else {
             
             let vcset = vc?.storyboard!.instantiateViewController( withIdentifier: "segue" )
@@ -54,9 +54,8 @@ class UrlSet:PostMethod,CheckSt {
             return
             
         }
-        
-        tryField.text = "try"
-        
+         tryField.text = "try"
+        }
     }
 }
 
