@@ -12,7 +12,7 @@
  
  3.Drag and drop it to the created cert.pem simulator
  
- General->About->Certificate Trust Settings->Enable certificate
+ General->About->Certificate Trust Settings->Enable certificate->Restart the simulator
  
  <img src="https://github.com/daisukenagata/RsaAuthentication/blob/master/Certificate.png?raw=true" width="280px">
  
