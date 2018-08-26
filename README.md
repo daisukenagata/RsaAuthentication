@@ -1,6 +1,6 @@
-# Swift4<->Python3.6.3
+# Swift4.1<->Python3.6.5
 
-### Python3.6.3 https --version localhost Setting
+### Python3.6.5 https --version localhost Setting
 
 ### Mac Terminal command 
 
